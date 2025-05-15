@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Wrapper from './components/Reuseable/Wrapper';
-import logo from "./assets/icons/logo.png";
+import logo from "../src/assets/icons/Logo.png";
 import { Menu, X } from 'lucide-react';
 import close from "../src/assets/icons/vector.png";
 
