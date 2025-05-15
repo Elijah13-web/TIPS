@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Wrapper from './components/Reuseable/Wrapper';
-import logo from "../src/assets/icons/Logo.png";
+import logo from "../src/assets/icons/Logo.png"
+import close from  "../src/assets/icons/Vector.png"
 import { Menu, X } from 'lucide-react';
-import close from "../src/assets/icons/vector.png";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,7 +46,6 @@ const Navbar = () => {
           {/* Mobile Menu Overlay */}
           {menuOpen && (
             <div className="fixed top-0 left-0 w-full h-screen bg-white z-50 md:hidden">
-              
               {/* Header: Logo and Title */}
               <div className="p-4 flex items-center space-x-3">
                 <img
