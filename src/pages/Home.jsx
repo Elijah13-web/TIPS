@@ -3,6 +3,8 @@ import Tips from '../components/Home/Tips'
 import Developing from '../components/Home/Developing'
 import OurCourse from '../components/Home/OurCourse'
 import Our from "../components/Home/Our"
+import WhyChoose from '../components/Home/WhyChoose'
+import Newsletter from '../components/Home/Newsletter'
 
 const Home = () => {
   return (
@@ -10,7 +12,9 @@ const Home = () => {
         <Tips/>
         <Developing/>
         <OurCourse/>
+        <WhyChoose/>
         <Our/>
+        <Newsletter/>
     </div>
   )
 }

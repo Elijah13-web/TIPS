@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Apply from './pages/Apply'
 import Navbar from './Navbar'
+import Footer from './components/Reuseable/Footer'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/apply" element={<Apply />} />
         <Route path="/about" element={<About />} />
       </Routes>
+      <Footer/>
     </Router>
   )
 }
