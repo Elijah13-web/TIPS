@@ -5,7 +5,7 @@ import logo from "../../assets/icons/Logo.png"
 import face from "../../assets/icons/face.png"
 import ig from "../../assets/icons/ig.png"
 import tittok from "../../assets/icons/tittok.png"
-import line from "../../assets/icons/vector 1.png"
+import line from "../../assets/icons/line.png"
 
 const Footer = () => {
   return (
