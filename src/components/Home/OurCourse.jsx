@@ -84,8 +84,8 @@ const OurCourse = () => {
           </div>
           
         </div>
-        <div className='rounded-xl bg-[#ED1C22] hover:bg-[#c8141c] w-56 mx-auto py-3 mt-10 cursor-pointer font-serif'>
-            <h1 className='text-center  text-[#FFFFFF] font-semibold'>Our Course</h1>
+        <div className='rounded-xl bg-[#ED1C22] hover:bg-[#FFFFFF] w-56 mx-auto py-3 mt-10 cursor-pointer font-serif'>
+            <h1 className='text-center  text-[#FFFFFF] hover:text-[#ED1C22] font-semibold'>Our Course</h1>
           </div>
       </Wrapper>
     </div>

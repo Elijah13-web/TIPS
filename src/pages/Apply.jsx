@@ -1,9 +1,10 @@
 import React from 'react';
+import Addmission from '../components/Apply/Addmission';
 
 const Apply = () => {
   return (
     <div>
-      Your content here
+      <Addmission />
     </div>
   );
 };

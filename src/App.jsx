@@ -1,23 +1,26 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import About from './pages/About'
-import Apply from './pages/Apply'
-import Navbar from './Navbar'
-import Footer from './components/Reuseable/Footer'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './Navbar';
+import Home from './pages/Home';
+import About from './pages/About';
+import CreateAccount from './components/Apply/CreateAccount';
+import Admission from './components/Apply/Addmission'; // renamed from Addmission
+import StudentPortal from './components/Apply/StudentPortal';
+import Courses from './components/Apply/Courses';
 
-const App = () => {
+function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/apply" element={<Apply />} />
         <Route path="/about" element={<About />} />
+        <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/admission" element={<Admission />} />
+        <Route path="/student-portal" element={<StudentPortal />} />
+        <Route path="/courses" element={<Courses />} />
       </Routes>
-      <Footer/>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
