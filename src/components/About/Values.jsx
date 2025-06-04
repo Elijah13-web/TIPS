@@ -1,6 +1,6 @@
 import React from 'react'
 import Wrapper from '../Reuseable/Wrapper'
-import vector2 from "../../assets/icons/vector 2.png"
+import vector2 from "../../assets/icons/Vector 2.png"
 
 const Values = () => {
   return (
