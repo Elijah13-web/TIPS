@@ -3,9 +3,10 @@ import Navbar from './Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import CreateAccount from './components/Apply/CreateAccount';
-import Admission from './components/Apply/Addmission'; // renamed from Addmission
+import Admission from './components/Apply/Addmission'; 
 import StudentPortal from './components/Apply/StudentPortal';
 import Courses from './components/Apply/Courses';
+import Footer from "./components/Reuseable/Footer"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/student-portal" element={<StudentPortal />} />
         <Route path="/courses" element={<Courses />} />
       </Routes>
+      <Footer/>
     </Router>
   );
 }

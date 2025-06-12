@@ -8,7 +8,7 @@ const AboutUs = () => {
     <div className=''>
        <div className='bg-[#003334c8] relative overflow-hidden font-serif'>
       
-      <div className='absolute inset-0 z-0 opacity-10'>
+      <div className='absolute inset-0 z-0 opacity-20'>
         <img src={cert} alt='certificate' className='w-full h-full object-cover'/>
       </div>
 

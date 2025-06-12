@@ -20,9 +20,9 @@ const Navbar = () => {
 
   return (
     <Wrapper>
-      <div className="pb-3 mx-auto container">
-        <div className="fixed top-0 left-0 w-full bg-white z-50 shadow-md">
-          <div className="flex justify-between items-center px-5 md:px-10 py-4 w-full">
+      <div className=" mx-auto container">
+        <div className="fixed top-0 left-0 w-full bg-white z-50  ">
+          <div className="flex justify-between items-center px-5 md:px-10 py-4 w-full mx-auto container shadow-2xl">
             {/* Logo */}
             <div className="flex items-center space-x-4 flex-1">
               <img
