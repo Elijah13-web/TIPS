@@ -13,7 +13,7 @@ import img8 from "../../assets/images/cctv.jpg"
 import img9 from "../../assets/images/analysis.jpg"
 import img10 from "../../assets/images/script.jpg"
 
-export const prodb=[
+export const prodb = [
     {
         _id: 1,
         heading:"BUSINESS AND ENTERPRISE MANAGEMENT",
@@ -58,7 +58,7 @@ export const prodb=[
     },
 ]
 
-export const vocdb=[
+export const vocdb = [
     {
         _id: 1,
         heading:"FASHION DESIGN.",
