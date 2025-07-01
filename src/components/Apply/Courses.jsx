@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import africa from "../../assets/images/africa.jpg";
 import Wrapper from '../Reuseable/Wrapper';
 import Voc from '../course/Voc';
-import Pro from '../course/pro';
+import Pro from '../course/Pro';
 
 const Courses = () => {
-  const [selectedCourse, setSelectedCourse] = useState('pro');
+  const [selectedCourse, setSelectedCourse] = useState('Pro');
 
   return (
     <div className='font-serif'>
