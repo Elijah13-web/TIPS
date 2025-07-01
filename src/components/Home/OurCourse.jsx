@@ -6,6 +6,7 @@ import fashion from "../../assets/icons/icon2.png"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import { Link } from 'react-router-dom'
 
 const courses = [
   {
@@ -84,9 +85,9 @@ const OurCourse = () => {
           </div>
           
         </div>
-        <div className='rounded-xl bg-[#ED1C22] hover:bg-[#FFFFFF] w-56 mx-auto py-3 mt-10 cursor-pointer font-serif'>
-            <h1 className='text-center  text-[#FFFFFF] hover:text-[#ED1C22] font-semibold'>Our Course</h1>
-          </div>
+        <Link to="/courses" className='  cursor-pointer font-serif'>
+            <h1 className='text-center rounded-xl  text-[#FFFFFF] hover:bg-[#FFFFFF] w-56 mx-auto py-3 mt-10 bg-[#ED1C22] hover:text-[#ED1C22] font-semibold'>Our Course</h1>
+          </Link>
       </Wrapper>
     </div>
   )

@@ -1,6 +1,8 @@
 import React from 'react';
 import five from "../../assets/images/five.jpg";
 import Wrapper from '../Reuseable/Wrapper';
+import { Link } from 'react-router-dom';
+
 
 const Application = () => {
   return (
@@ -22,9 +24,9 @@ const Application = () => {
                 and unlock your creativity and discover what makes you a leader.
               </p>
               </div>
-            <button className='mt-10 bg-[#ED1C22] md:w-[359px] w-full py-3 rounded-lg cursor-pointer  hover:bg-white'>
-              <h1 className='text-white text-2xl font-semibold py-2 hover:text-[#ED1C22]'>Start Your Application</h1>
-            </button>
+            <Link to="/courses" className=' cursor-pointer '>
+              <h1 className='text-white mt-10 bg-[#ED1C22] mx-auto hover:bg-white md:w-[359px] w-full py-2 rounded-lg text-2xl font-semibold hover:text-[#ED1C22]'>Start Your Application</h1>
+            </Link>
             </div>
           </Wrapper>
         </div>

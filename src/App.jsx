@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -6,12 +6,15 @@ import CreateAccount from './components/Apply/CreateAccount';
 import Admission from './components/Apply/Addmission'; 
 import StudentPortal from './components/Apply/StudentPortal';
 import Courses from './components/Apply/Courses';
-import Footer from "./components/Reuseable/Footer"
+import Footer from './components/Reuseable/Footer';
+import ScrollToTop from './components/Reuseable/ScrollToTop';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Navbar />
+      <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -20,8 +23,9 @@ function App() {
         <Route path="/student-portal" element={<StudentPortal />} />
         <Route path="/courses" element={<Courses />} />
       </Routes>
-      <Footer/>
-    </Router>
+
+      <Footer />
+    </BrowserRouter>
   );
 }
 

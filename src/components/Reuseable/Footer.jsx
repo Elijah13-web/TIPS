@@ -37,7 +37,8 @@ const Footer = () => {
                         </div>
                         <div className='space-y-4 text-center md:text-start mx-auto'>
                             <h1 className='w-[270px] font-bold text-3xl'>Contact Number</h1>
-                            <h1>+234 801 848 4515</h1>
+                            <h1>+234 808 033 3008</h1>
+                            <h1>+234 810 848 4515</h1>
                         </div>
                     </div>
                     
