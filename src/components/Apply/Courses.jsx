@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import africa from "../../assets/images/africa.jpg";
 import Wrapper from '../Reuseable/Wrapper';
 import Voc from '../course/Voc';
-import Pro from '../course/pro';
+import Pro from '<div styleName={} />
+<course />
+<P></P>ro';
 
 const Courses = () => {
   const [selectedCourse, setSelectedCourse] = useState('pro');
