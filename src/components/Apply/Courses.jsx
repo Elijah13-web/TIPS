@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import africa from "../../assets/images/africa.jpg";
 import Wrapper from '../Reuseable/Wrapper';
-import Pro from '../course/pro'; 
 import Voc from '../course/Voc';
+import Pro from '../course/pro';
 
 const Courses = () => {
   const [selectedCourse, setSelectedCourse] = useState('pro');
@@ -28,7 +28,7 @@ const Courses = () => {
       <Wrapper>
         <div className='flex md:gap-5 gap-2 my-10 mx-3 justify-center md:justify-start'>
           <button
-            onClick={() => setSelectedCourse('pro')}
+            onClick={() => setSelectedCourse('Pro')}
             className={`md:px-6 px-2 py-2 rounded-full font-semibold border text-sm md:text-lg cursor-pointer ${
               selectedCourse === 'pro'
                 ? 'bg-[#ED1C22] text-white'
@@ -52,7 +52,7 @@ const Courses = () => {
       </Wrapper>
 
       <Wrapper>
-        {selectedCourse === 'pro' ? <Pro /> : <Voc />}
+        {selectedCourse === 'Pro' ? <Pro /> : <Voc />}
       </Wrapper>
     </div>
   );
