@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <ScrollToTop />
-      
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -22,6 +22,8 @@ function App() {
         <Route path="/admission" element={<Admission />} />
         <Route path="/student-portal" element={<StudentPortal />} />
         <Route path="/courses" element={<Courses />} />
+
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 
       <Footer />
