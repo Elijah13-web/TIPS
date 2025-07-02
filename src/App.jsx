@@ -23,7 +23,7 @@ function App() {
         <Route path="/student-portal" element={<StudentPortal />} />
         <Route path="/courses" element={<Courses />} />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
 
       <Footer />
