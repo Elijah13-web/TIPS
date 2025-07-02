@@ -3,7 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    historyApiFallback: true
-  }
+  // Do not add 'base' here unless deploying under a subdirectory
 })
