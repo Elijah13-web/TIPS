@@ -1,9 +1,10 @@
-module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // Make sure this matches your folder structure
-  ],
+
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+    },
   },
+
   plugins: [],
-}
+};

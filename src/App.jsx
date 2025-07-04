@@ -13,9 +13,9 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <ScrollToTop />
+      <ScrollToTop /> 
 
-      <Routes>
+          <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/create-account" element={<CreateAccount />} />
@@ -23,9 +23,8 @@ function App() {
         <Route path="/student-portal" element={<StudentPortal />} />
         <Route path="/courses" element={<Courses />} />
 
-        <Route path="*" element={<Navigate to="/home" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-
       <Footer />
     </BrowserRouter>
   );
