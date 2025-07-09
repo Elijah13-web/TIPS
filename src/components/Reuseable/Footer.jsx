@@ -9,7 +9,7 @@ import line from "../../assets/icons/line.png"
 
 const Footer = () => {
   return (
-    <div className='bg-[#003334] relative overflow-hidden font-serif text-[#FFFFFF] py-10 mx-auto container'>
+    <div className='bg-[#003334] relative overflow-hidden font-serif text-[#FFFFFF] py-10 lg:mx-auto lg:container'>
         <Wrapper>
             <div >
                 <div className='absolute inset-0 z-0 opacity-10'>

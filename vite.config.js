@@ -6,7 +6,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
-  // ✅ Very important for Vercel to route correctly
+ 
   server: {
     historyApiFallback: true
   }

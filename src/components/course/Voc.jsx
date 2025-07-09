@@ -21,11 +21,10 @@ const Voc = () => {
               <div className='bg-[#FFFFFF] rounded-3xl px-4 pt-4 pb-4 font-serif text-[#003334]'>
                 <h3 className='lg:text-lg font-bold mb-3'>{item.heading}</h3>
                 <p className='text-sm lg:text-lg mb-4 lg:w-[350px] lg:h-[230px]'>{item.description}</p>
-                <Link to={`/professional/${item._id}`}>
-                  <p className='bg-[#ED1C22] px-4 py-2 text-sm font-semibold w-max underline text-white hover:text-[#ED1C22] border border-transparent hover:border-[#ED1C22] hover:bg-white cursor-pointer'>
-                    Apply Now
-                  </p>
-                </Link>
+            <Link to="/create-account">
+              <p className='bg-[#ED1C22] px-4 py-2 text-sm font-semibold w-max underline text-white hover:text-[#ED1C22] border border-transparent hover:border-[#ED1C22] hover:bg-white cursor-pointer'>
+                Apply Now </p>
+              </Link>
               </div>
             </div>
           </div>

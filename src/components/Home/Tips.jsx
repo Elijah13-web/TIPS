@@ -6,9 +6,9 @@ import Wrapper from '../Reuseable/Wrapper'
 const Tips = () => {
   return (
     <div className=''>
-        <div className='lg:h-[460px] h-[300px] bg-[#003334c8] relative overflow-hidden font-serif'>
+        <div className='lg:h-[460px] h-[310px] bg-[#003334c8] relative overflow-hidden font-serif'>
        <div className='absolute inset-0 z-0 opacity-40'>
-         <img src={title} alt='' className='lg:h-[460px] h-[300px] w-full'/>
+         <img src={title} alt='' className='lg:h-[460px] h-[310px] w-full'/>
        </div>
        <Wrapper>
         <div className='relative text-[#FFFFFF] mt-32 font-semi-bold mx-10'>

@@ -5,7 +5,8 @@ import Voc from '../course/Voc';
 import Pro from '../course/Pro';
 
 const Courses = () => {
-  const [selectedCourse, setSelectedCourse] = useState('Pro');
+ const [selectedCourse, setSelectedCourse] = useState('pro'); // lowercase 'pro'
+
 
   return (
     <div className='font-serif'>

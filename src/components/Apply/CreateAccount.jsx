@@ -1,8 +1,12 @@
 import React from 'react'
+import Register from '../Auth/Register'
 
 const CreateAccount = () => {
   return (
-    <div>CreateAccount</div>
+    <div>
+      <Register/>
+      
+    </div>
   )
 }
 

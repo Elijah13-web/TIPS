@@ -8,6 +8,7 @@ import StudentPortal from './components/Apply/StudentPortal';
 import Courses from './components/Apply/Courses';
 import Footer from './components/Reuseable/Footer';
 import ScrollToTop from './components/Reuseable/ScrollToTop';
+import Login from './components/Auth/Login';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
         <Route path="/courses" element={<Courses />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/login" element={<Login />} />
+
       </Routes>
       <Footer />
     </BrowserRouter>
