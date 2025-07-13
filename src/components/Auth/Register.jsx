@@ -65,7 +65,7 @@ const togglePassword = () => setShowPassword((prev) => !prev);
           </div>
 
           {/* Right/down Side */}
-          <div className='bg-white flex flex-col justify-center md:p-6 p-4'>
+          <div className='bg-white flex flex-col justify-center md:p-8 px-2 py-4'>
             <h2 className='text-2xl font-bold mb-6 text-[#003334]'>Create Account</h2>
 
             {/* Form */}

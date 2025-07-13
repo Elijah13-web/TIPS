@@ -1,5 +1,5 @@
 import React from 'react';
-import Success from "../../assets/icons/Success Icon.png";
+import Success from "../../assets/icons/Logo.png";
 
 const Subscribed = ({ onClose }) => {
   return (
