@@ -4,7 +4,7 @@ import Wrapper from './components/Reuseable/Wrapper';
 import logo from '../src/assets/icons/Logo.png';
 import close from '../src/assets/icons/Vector.png';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import Logout from './components/Modals/logout.png';
+import Logout from './components/modals/Logout';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
