@@ -10,7 +10,6 @@ const Register = () => {
     email: '',
     password: '',
   });
-
   const [showPassword, setShowPassword] = useState(false);
 
 const togglePassword = () => setShowPassword((prev) => !prev);
@@ -44,7 +43,7 @@ const togglePassword = () => setShowPassword((prev) => !prev);
   };
 
   return (
-    <div className='w-full min-h-screen font-serif bg-[#003334c8] relative'>
+    <div className='w-full min-h-screen font-serif bg-[#003334c8] relative mx-auto container'>
 
       {/* Background Image */}
       <img

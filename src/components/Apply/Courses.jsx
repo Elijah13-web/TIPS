@@ -9,7 +9,7 @@ const Courses = () => {
 
 
   return (
-    <div className='font-serif'>
+    <div className='font-serif lg:mx-auto lg:container'>
       {/* Header Section */}
       <div className='bg-[#003334c8] h-[150px] relative overflow-hidden my-20'>
         <div className='absolute inset-0 z-0 opacity-35'>
