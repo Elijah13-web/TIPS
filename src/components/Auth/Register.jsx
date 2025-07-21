@@ -30,15 +30,19 @@ const Register = () => {
 
     setLoading(true);
     try {
-      const res = await register(`${formData.firstName} ${formData.lastName}`, formData.email, formData.password);
+      const res = await register(
+        `${formData.firstName} ${formData.lastName}`,
+        formData.email,
+        formData.password
+      );
       if (res.success) {
         navigate('/login');
       } else {
         setErrors({ api: res.msg || 'Registration failed' });
       }
     } catch (err) {
-      console.error(err);
-      setErrors({ api: 'Something went wrong' });
+      console.error('Register error:', err);
+      setErrors({ api: 'Something went wrong. Please try again.' });
     } finally {
       setLoading(false);
     }
@@ -56,17 +60,49 @@ const Register = () => {
           <div className='bg-white flex flex-col justify-center md:p-8 px-2 py-4'>
             <h2 className='text-2xl font-bold mb-6 text-[#003334]'>Create Account</h2>
             <form onSubmit={handleSubmit} className='space-y-4'>
-              <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} className={`w-full p-3 border rounded-lg ${errors.firstName ? 'border-red-500' : 'border-gray-300'}`} />
-              <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} className={`w-full p-3 border rounded-lg ${errors.lastName ? 'border-red-500' : 'border-gray-300'}`} />
-              <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} className={`w-full p-3 border rounded-lg ${errors.email ? 'border-red-500' : 'border-gray-300'}`} />
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                value={formData.firstName}
+                onChange={handleChange}
+                className={`w-full p-3 border rounded-lg ${errors.firstName ? 'border-red-500' : 'border-gray-300'}`}
+              />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                value={formData.lastName}
+                onChange={handleChange}
+                className={`w-full p-3 border rounded-lg ${errors.lastName ? 'border-red-500' : 'border-gray-300'}`}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                className={`w-full p-3 border rounded-lg ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+              />
               <div className="relative">
-                <input type={showPassword ? 'text' : 'password'} name="password" placeholder="Password" value={formData.password} onChange={handleChange} className={`w-full p-3 border rounded-lg pr-12 ${errors.password ? 'border-red-500' : 'border-gray-300'}`} />
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className={`w-full p-3 border rounded-lg pr-12 ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
+                />
                 <div onClick={togglePassword} className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer text-gray-500">
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </div>
               </div>
               {errors.api && <p className='text-red-500 text-sm'>{errors.api}</p>}
-              <button type="submit" disabled={loading} className='bg-[#ED1C22] cursor-pointer hover:bg-white border border-[#ED1C22] text-white hover:text-[#ED1C22] py-3 mt-6 px-6 rounded-lg font-semibold w-full md:w-[200px] mx-auto'>
+              <button
+                type="submit"
+                disabled={loading}
+                className='bg-[#ED1C22] cursor-pointer hover:bg-white border border-[#ED1C22] text-white hover:text-[#ED1C22] py-3 mt-6 px-6 rounded-lg font-semibold w-full md:w-[200px] mx-auto'
+              >
                 {loading ? 'Registering...' : 'Create Account'}
               </button>
             </form>
@@ -79,4 +115,5 @@ const Register = () => {
     </div>
   );
 };
+
 export default Register;
