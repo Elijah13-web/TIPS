@@ -141,7 +141,6 @@ const Navbar = () => {
     <div className="flex flex-col mt-10 space-y-6 px-10">
       <Link to="/" onClick={() => handleNavClick('/')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Home</Link>
       <Link to="/about" onClick={() => handleNavClick('/about')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">About</Link>
-      <Link to="/create-account" onClick={() => handleNavClick('/create-account')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Create Account</Link>
       <Link to="/admission" onClick={() => handleNavClick('/admission')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Admission</Link>
       <Link to="/student-portal" onClick={() => handleNavClick('/student-portal')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Student Portal</Link>
       <Link to="/courses" onClick={() => handleNavClick('/courses')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Our Courses</Link>

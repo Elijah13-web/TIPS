@@ -5,7 +5,7 @@ const Logout = ({ onClose, onLogout }) => {
   return (
     <div className="fixed inset-0 flex justify-center items-center z-50  bg-opacity-30">
       <div className="flex flex-col items-center rounded-lg w-[90%] max-w-md bg-white p-6 shadow-xl">
-        {/* Logo / Icon */}
+        
         <img
           src={Success}
           className="w-20 h-20 mb-4"

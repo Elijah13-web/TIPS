@@ -67,7 +67,7 @@ const Application = () => {
 
           <div>
             <textarea
-              name="file" // keeping your original textarea but now working as file input
+              name="file" 
               placeholder="upload WAEC,NECO,GCE Results (If Applicable To Chosen Course)"
               onClick={(e) => {
                 e.preventDefault();
