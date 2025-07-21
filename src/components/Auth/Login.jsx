@@ -14,28 +14,42 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-    setErrors(prev => ({ ...prev, [e.target.name]: '' }));
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+    setErrors(prev => ({
+      ...prev,
+      [e.target.name]: ''
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate fields
     const newErrors = {};
-    if (!formData.email) newErrors.email = 'Email is required';
-    if (!formData.password) newErrors.password = 'Password is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    if (!formData.password.trim()) newErrors.password = 'Password is required';
     setErrors(newErrors);
     if (Object.keys(newErrors).length) return;
 
     setLoading(true);
     try {
       const res = await login(formData.email, formData.password);
+      console.log("Login response:", res);
+
       if (res.success && res.token) {
+        // Save to localStorage
         localStorage.setItem("loggedIn", "true");
         localStorage.setItem("token", res.token);
         localStorage.setItem("user", JSON.stringify(res.user));
+
+        // Update context
         setIsLoggedIn(true);
         setToken(res.token);
         setUser(res.user);
+
         navigate('/');
       } else {
         setErrors({ api: res.msg || 'Invalid login credentials' });
@@ -77,7 +91,10 @@ const Login = () => {
                   onChange={handleChange}
                   className={`w-full p-3 border rounded-lg pr-12 ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
                 />
-                <div onClick={() => setShowPassword(!showPassword)} className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer text-gray-500">
+                <div
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer text-gray-500"
+                >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </div>
               </div>

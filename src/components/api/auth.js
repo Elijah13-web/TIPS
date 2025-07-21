@@ -1,25 +1,22 @@
+const API_URL = "https://tips-backend.onrender.com/api/auth";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://tips-backend.onrender.com";
-
-export const register = async (fullName, email, password) => {
+export const Login = async (email, password) => {
   try {
-const res = await fetch(`${API_URL}/api/auth/register`, {
+    const res = await fetch(`${API_URL}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fullName, email, password }),
+      body: JSON.stringify({
+        email: email.trim(),
+        password: password.trim(),
+      }),
     });
-
-    const data = await res.json();
-    if (!res.ok) {
-      console.error("Register error response:", data);
-      return { error: data.msg || "Registration failed" };
-    }
-    return data;
+    return await res.json();
   } catch (error) {
-    console.error("Register error:", error);
-    return { error: "Network error" };
+    console.error("Login error:", error);
+    return { success: false, msg: "Network error" };
   }
 };
+
 
 export const login = async (email, password) => {
   try {
