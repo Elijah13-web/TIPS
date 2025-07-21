@@ -13,6 +13,9 @@ import Register from './components/Auth/Register';
 import { AuthProvider, AuthContext } from './components/Auth/AuthContext';
 import { ApplicationModalProvider, ApplicationModalContext } from './components/Auth/ApplicationModalContext';
 import Application from './components/modals/Application';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function AppContent() {
   const { showModal, setShowModal } = useContext(ApplicationModalContext);
@@ -59,9 +62,10 @@ function AppContent() {
 export default function App() {
   return (
     <AuthProvider>
-      <ApplicationModalProvider>
-        <AppContent />
-      </ApplicationModalProvider>
-    </AuthProvider>
+    <ApplicationModalProvider>
+      <AppContent />
+      <ToastContainer />
+    </ApplicationModalProvider>
+  </AuthProvider>
   );
 }

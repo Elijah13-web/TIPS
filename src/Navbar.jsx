@@ -1,22 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Wrapper from './components/Reuseable/Wrapper';
 import logo from '../src/assets/icons/Logo.png';
 import close from '../src/assets/icons/Vector.png';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import Logout from './components/modals/Logout';
+import { AuthContext } from './components/Auth/AuthContext';
 
 const Navbar = () => {
+  const { isLoggedIn, user } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [logoutModalOpen, setLogoutModalOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
-
-
-
-  const [isAuthenticated, setIsAuthenticated] = useState(true); 
-  const user = { fullName: "" }; 
-
   const location = useLocation();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -30,9 +26,12 @@ const Navbar = () => {
 
   const handleLogout = () => {
     console.log('Logging out...');
-    setIsAuthenticated(false);
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     setDropdownOpen(false);
     setLogoutModalOpen(false);
+    window.location.href = "/"; // refresh or redirect
   };
 
   return (
@@ -61,7 +60,6 @@ const Navbar = () => {
             <div className="hidden md:flex space-x-20 items-center">
               <Link to="/" onClick={() => handleNavClick('/')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Home</Link>
 
-              {/* Apply Dropdown */}
               <div className="group relative space-x-6">
                 <button className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Apply</button>
                 <div className="absolute right-0 top-full mt-2 bg-[#EDEDED] border rounded-md shadow-md w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-100 z-50">
@@ -75,27 +73,17 @@ const Navbar = () => {
 
               {/* Profile Dropdown */}
               <div className="relative border px-4 py-1 rounded-lg">
-                {isAuthenticated ? (
-                  <button
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="flex items-center text-xl text-[#003334] cursor-pointer font-serif hover:text-[#ED1C22]"
-                  >
-                    {user.fullName}
-                    <ChevronDown size={20} className={`ml-1 transition-transform ${dropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="flex items-center cursor-pointer text-xl text-[#003334] font-serif hover:text-[#ED1C22]"
-                  >
-                    Account
-                    <ChevronDown size={20} className={`ml-1 transition-transform ${dropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
-                  </button>
-                )}
+                <button
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  className="flex items-center text-xl text-[#003334] cursor-pointer font-serif hover:text-[#ED1C22]"
+                >
+                  {isLoggedIn && user?.fullName ? user.fullName : "Account"}
+                  <ChevronDown size={20} className={`ml-1 transition-transform ${dropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
+                </button>
 
                 {dropdownOpen && (
                   <div className="absolute right-0 mt-2 bg-[#EDEDED] border rounded-md shadow-md w-40 z-50">
-                    {isAuthenticated ? (
+                    {isLoggedIn ? (
                       <button
                         onClick={() => setLogoutModalOpen(true)}
                         className="block w-full text-left cursor-pointer px-4 py-2 hover:bg-green-800 font-serif hover:text-white"
@@ -123,74 +111,66 @@ const Navbar = () => {
 
           {/* Mobile Menu */}
           {menuOpen && (
-  <div className="fixed top-0 left-0 w-full h-screen bg-white z-50 md:hidden">
-    <div className="p-4 flex items-center space-x-3">
-      <img
-        src={logo}
-        alt="logo"
-        onClick={() =>
-          location.pathname === '/'
-            ? window.scrollTo({ top: 0, behavior: 'smooth' })
-            : (window.location.href = '/')
-        }
-        className="w-12 h-12 cursor-pointer"
-      />
-      <h1 className="text-[#000000] font-serif text-sm">TRIUMPHANT INSTITUTE OF PROFESSIONAL STUDIES</h1>
-    </div>
+            <div className="fixed top-0 left-0 w-full h-screen bg-white z-50 md:hidden">
+              <div className="p-4 flex items-center space-x-3">
+                <img
+                  src={logo}
+                  alt="logo"
+                  onClick={() =>
+                    location.pathname === '/'
+                      ? window.scrollTo({ top: 0, behavior: 'smooth' })
+                      : (window.location.href = '/')
+                  }
+                  className="w-12 h-12 cursor-pointer"
+                />
+                <h1 className="text-[#000000] font-serif text-sm">TRIUMPHANT INSTITUTE OF PROFESSIONAL STUDIES</h1>
+              </div>
 
-    <div className="flex flex-col mt-10 space-y-6 px-10">
-      <Link to="/" onClick={() => handleNavClick('/')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Home</Link>
-      <Link to="/about" onClick={() => handleNavClick('/about')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">About</Link>
-      <Link to="/admission" onClick={() => handleNavClick('/admission')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Admission</Link>
-      <Link to="/student-portal" onClick={() => handleNavClick('/student-portal')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Student Portal</Link>
-      <Link to="/courses" onClick={() => handleNavClick('/courses')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Our Courses</Link>
+              <div className="flex flex-col mt-10 space-y-6 px-10">
+                <Link to="/" onClick={() => handleNavClick('/')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Home</Link>
+                <Link to="/about" onClick={() => handleNavClick('/about')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">About</Link>
+                <Link to="/admission" onClick={() => handleNavClick('/admission')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Admission</Link>
+                <Link to="/student-portal" onClick={() => handleNavClick('/student-portal')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Student Portal</Link>
+                <Link to="/courses" onClick={() => handleNavClick('/courses')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Our Courses</Link>
 
-      {isAuthenticated ? (
-        <div className="relative">
-          <button
-            onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
-            className="flex items-center cursor-pointer w-full text-xl text-[#003334] font-serif hover:text-[#ED1C22]"
-          >
-            {user.fullName}
-            <svg
-              className={`w-4 h-4 ml-2 transform transition-transform ${mobileDropdownOpen ? 'rotate-180' : ''}`}
-              fill="currentColor" viewBox="0 0 20 20"
-            >
-              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-          </button>
-          {mobileDropdownOpen && (
-            <div className="mt-2 bg-[#EDEDED] border rounded-md shadow-md">
-              <button
-                onClick={() => { setLogoutModalOpen(true); toggleMenu(); }}
-                className=" w-full text-left px-4 py-2 cursor-pointer text-lg hover:bg-green-800 font-serif hover:text-white"
-              >
-                Logout
-              </button>
+                {isLoggedIn ? (
+                  <div className="relative">
+                    <button
+                      onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+                      className="flex items-center cursor-pointer w-full text-xl text-[#003334] font-serif hover:text-[#ED1C22]"
+                    >
+                      {user?.fullName}
+                      <ChevronDown size={20} className={`ml-1 transition-transform ${mobileDropdownOpen ? 'rotate-180' : 'rotate-0'}`} />
+                    </button>
+                    {mobileDropdownOpen && (
+                      <div className="mt-2 bg-[#EDEDED] border rounded-md shadow-md">
+                        <button
+                          onClick={() => { setLogoutModalOpen(true); toggleMenu(); }}
+                          className=" w-full text-left px-4 py-2 cursor-pointer text-lg hover:bg-green-800 font-serif hover:text-white"
+                        >
+                          Logout
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <>
+                    <Link to="/login" onClick={() => handleNavClick('/login')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Login</Link>
+                    <Link to="/register" onClick={() => handleNavClick('/register')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Register</Link>
+                  </>
+                )}
+
+                <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2">
+                  <button onClick={toggleMenu}>
+                    <img src={close} alt="close" className="rounded-full p-2 w-8 border cursor-pointer" />
+                  </button>
+                </div>
+              </div>
             </div>
           )}
         </div>
-      ) : (
-        <>
-          <Link to="/login" onClick={() => handleNavClick('/login')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Login</Link>
-          <Link to="/register" onClick={() => handleNavClick('/register')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Register</Link>
-        </>
-      )}
-
-      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2">
-        <button onClick={toggleMenu}>
-          <img src={close} alt="close" className="rounded-full p-2 w-8 border cursor-pointer" />
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
-
-        </div>
       </div>
 
-      {/* Logout Modal */}
       {logoutModalOpen && <Logout onClose={() => setLogoutModalOpen(false)} onLogout={handleLogout} />}
     </Wrapper>
   );

@@ -10,6 +10,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
   const { setIsLoggedIn, setUser, setToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -50,6 +51,10 @@ const Login = () => {
         setToken(res.token);
         setUser(res.user);
 
+        // ✅ Show success (toast, alert or console)
+        alert("Login successful!");
+
+        // Redirect
         navigate('/');
       } else {
         setErrors({ api: res.msg || 'Invalid login credentials' });
