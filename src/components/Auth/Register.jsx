@@ -5,7 +5,12 @@ import signup from "../../assets/images/signup.jpg";
 import { Eye, EyeOff } from 'lucide-react';
 
 const Register = () => {
-  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', password: '' });
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -14,27 +19,37 @@ const Register = () => {
   const togglePassword = () => setShowPassword(!showPassword);
 
   const handleChange = (e) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-    setErrors(prev => ({ ...prev, [e.target.name]: '' }));
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+    setErrors(prev => ({
+      ...prev,
+      [e.target.name]: ''
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const newErrors = {};
-    if (!formData.firstName) newErrors.firstName = 'First name is required';
-    if (!formData.lastName) newErrors.lastName = 'Last name is required';
-    if (!formData.email) newErrors.email = 'Email is required';
-    if (!formData.password) newErrors.password = 'Password is required';
+    if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
+    if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    if (!formData.password.trim()) newErrors.password = 'Password is required';
     setErrors(newErrors);
     if (Object.keys(newErrors).length) return;
 
     setLoading(true);
     try {
       const res = await register(
-        `${formData.firstName} ${formData.lastName}`,
-        formData.email,
-        formData.password
+        `${formData.firstName.trim()} ${formData.lastName.trim()}`,
+        formData.email.trim(),
+        formData.password.trim()
       );
+
+      console.log("Register response:", res);
+
       if (res.success) {
         navigate('/login');
       } else {
@@ -93,7 +108,10 @@ const Register = () => {
                   onChange={handleChange}
                   className={`w-full p-3 border rounded-lg pr-12 ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
                 />
-                <div onClick={togglePassword} className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer text-gray-500">
+                <div
+                  onClick={togglePassword}
+                  className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer text-gray-500"
+                >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </div>
               </div>

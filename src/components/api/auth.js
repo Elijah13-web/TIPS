@@ -1,21 +1,23 @@
 const API_URL = "https://tips-backend.onrender.com/api/auth";
 
-export const Login = async (email, password) => {
+export const register = async (fullName, email, password) => {
   try {
-    const res = await fetch(`${API_URL}/login`, {
+    const res = await fetch(`${API_URL}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        fullName: fullName.trim(),
         email: email.trim(),
         password: password.trim(),
       }),
     });
     return await res.json();
   } catch (error) {
-    console.error("Login error:", error);
+    console.error("Register error:", error);
     return { success: false, msg: "Network error" };
   }
 };
+
 
 
 export const login = async (email, password) => {
