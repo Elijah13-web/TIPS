@@ -15,7 +15,7 @@ const Navbar = () => {
 
 
   const [isAuthenticated, setIsAuthenticated] = useState(true); 
-  const user = { fullName: "John Ajiboye " }; 
+  const user = { fullName: "" }; 
 
   const location = useLocation();
 
