@@ -33,7 +33,8 @@ const Newsletter = () => {
     setError('');
     setLoading(true);
     try {
-      const response = await axios.post("https://tips-backend.onrender.com/modals/subscribe", { email });
+     await axios.post("https://tips-backend.onrender.com/modals/subscribe", { email });
+      setSuccess(true); 
 
       if (response.data && response.data.success) {
         setSuccess(true);    // Show modal
