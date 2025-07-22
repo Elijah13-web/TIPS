@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import Wrapper from '../Reuseable/Wrapper';
+import SuccessModal from '../modals/SuccessModal';
+import axios from 'axios';
+
 
 const Application = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +11,7 @@ const Application = () => {
     file: null,
   });
   const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState(false); // ✅
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -19,22 +23,37 @@ const Application = () => {
     setErrors((prev) => ({ ...prev, [name]: '' }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newErrors = {};
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const newErrors = {};
 
-    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    if (!formData.file) newErrors.file = 'Please upload a file';
+  if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+  if (!formData.email.trim()) newErrors.email = 'Email is required';
+  if (!formData.file) newErrors.file = 'Please upload a file';
 
-    setErrors(newErrors);
+  setErrors(newErrors);
 
-    if (Object.keys(newErrors).length === 0) {
-      console.log('Form submitted:', formData);
-      alert('Application sent successfully!');
-      setFormData({ phone: '', email: '', file: null });
+  if (Object.keys(newErrors).length === 0) {
+    try {
+      // optional: upload file to backend or cloud first
+      // Here we'll just send phone & email
+      const res = await axios.post('https://tips-backend.onrender.com/api/apply', {
+        phone: formData.phone,
+        email: formData.email
+      });
+
+      if (res.data && res.data.success) {
+        setSuccess(true);
+        setFormData({ phone: '', email: '', file: null });
+      } else {
+        alert(res.data?.message || 'Submission failed.');
+      }
+    } catch (error) {
+      console.error('Submit error:', error);
+      alert('An error occurred. Please try again.');
     }
-  };
+  }
+};
 
   return (
     <div className='bg-[#ededed] p-5 rounded-xl font-serif'>
@@ -67,8 +86,8 @@ const Application = () => {
 
           <div>
             <textarea
-              name="file" 
-              placeholder="upload WAEC,NECO,GCE Results (If Applicable To Chosen Course)"
+              name="file"
+              placeholder="Upload WAEC, NECO, GCE Results (If Applicable To Chosen Course)"
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById('hiddenFileInput').click();
@@ -89,7 +108,7 @@ const Application = () => {
           </div>
 
           <h1 className='text-sm'>
-            NB: WAEC,NECO,GCE Results are only applicable to professional course applications
+            NB: WAEC, NECO, GCE Results are only applicable to professional course applications
           </h1>
 
           <div className='flex justify-center'>
@@ -102,6 +121,14 @@ const Application = () => {
           </div>
         </form>
       </Wrapper>
+
+      {success && (
+        <SuccessModal
+          onClose={() => setSuccess(false)}
+          title="Application Sent!"
+          message="Your application has been submitted successfully."
+        />
+      )}
     </div>
   );
 };

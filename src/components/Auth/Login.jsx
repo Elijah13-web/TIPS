@@ -4,12 +4,14 @@ import { AuthContext } from './AuthContext';
 import { login } from '../api/auth';
 import signup from "../../assets/images/signup.jpg";
 import { Eye, EyeOff } from 'lucide-react';
+import LoginSuccessModal from '../modals/LoginSuccessModal';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false); 
 
   const { setIsLoggedIn, setUser, setToken } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -51,11 +53,8 @@ const Login = () => {
         setToken(res.token);
         setUser(res.user);
 
-        // ✅ Show success (toast, alert or console)
-        alert("Login successful!");
-
-        // Redirect
-        navigate('/');
+        // ✅ Show modal
+        setSuccess(true);
       } else {
         setErrors({ api: res.msg || 'Invalid login credentials' });
       }
@@ -65,6 +64,12 @@ const Login = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  // When modal is closed, navigate to home
+  const handleModalClose = () => {
+    setSuccess(false);
+    navigate('/');
   };
 
   return (
@@ -115,6 +120,8 @@ const Login = () => {
           </div>
         </div>
       </div>
+
+      {success && <LoginSuccessModal onClose={handleModalClose} />}
     </div>
   );
 };

@@ -15,6 +15,7 @@ import { ApplicationModalProvider, ApplicationModalContext } from './components/
 import Application from './components/modals/Application';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AdminApplications from './pages/AdminApplications';
 
 
 function AppContent() {
@@ -34,10 +35,12 @@ function AppContent() {
           <Route path="/courses" element={<Courses />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/admin/applications" element={<AdminApplications />} />
           <Route
             path="/application"
             element={isLoggedIn ? <Application /> : <Navigate to="/login" replace />}
           />
+
         </Routes>
         <Footer />
       </BrowserRouter>
