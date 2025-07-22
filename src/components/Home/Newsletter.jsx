@@ -19,7 +19,7 @@ const handleSubmit = async (e) => {
   setError('');
   setLoading(true);
   try {
-await axios.post("https://tips-backend.onrender.com/modals/subscribe", { ajiboyeelijah242@gmail.com });
+    await axios.post("https://tips-backend.onrender.com/modals/subscribe", { email });
 
     if (response.data && response.data.success) {
       setSuccess(true);    // Show modal
