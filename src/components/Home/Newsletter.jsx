@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Wrapper from '../Reuseable/Wrapper';
 import jumb from "../../assets/icons/jumb.jpg";
-import Subscribed from '../modals/Subscribed';
+import SuccessModal from '../modals/SuccessModal';
 import axios from 'axios';
 
 const Newsletter = () => {
@@ -33,11 +33,10 @@ const Newsletter = () => {
     setError('');
     setLoading(true);
     try {
-      await axios.post("https://tips-backend.onrender.com/subscribe", { email });
-
+      const response = await axios.post("https://tips-backend.onrender.com/subscribe", { email });
 
       if (response.data && response.data.success) {
-        setSuccess(true);    // Show modal
+        setSuccess(true);
         setEmail('');
       } else {
         setError(response.data?.message || "Subscription failed. Please try again.");
@@ -54,12 +53,10 @@ const Newsletter = () => {
   return (
     <Wrapper>
       <div className='bg-[#003334B0] relative overflow-hidden font-serif rounded-2xl mb-5 mx-3 lg:w-[1100px] lg:mx-auto text-[#FFFFFF]'>
-        {/* Background image */}
         <div className='absolute inset-0 z-0 opacity-30'>
           <img src={jumb} alt='jumbotron' className='w-full h-full object-cover' />
         </div>
 
-        {/* Foreground content */}
         <form
           className='relative z-10 grid md:grid-cols-2 py-5 md:px-10 px-3 text-[#FFFFFF]'
           onSubmit={handleSubmit}
@@ -71,7 +68,6 @@ const Newsletter = () => {
 
           <div className='flex flex-col gap-2'>
             <div className='flex gap-3'>
-              {/* Email Input */}
               <input
                 type='email'
                 value={email}
@@ -82,7 +78,6 @@ const Newsletter = () => {
                 autoComplete="email"
               />
 
-              {/* Subscribe Button */}
               <button
                 type="submit"
                 className={`rounded-lg py-2 w-44 bg-[#ED1C22] text-white font-semibold hover:bg-[#c8141c] transition duration-200 cursor-pointer ${loading ? 'opacity-60 cursor-not-allowed' : ''}`}
@@ -91,15 +86,13 @@ const Newsletter = () => {
                 {loading ? "Submitting..." : "Subscribe"}
               </button>
             </div>
-
-            {/* Error Message */}
             {error && <span className='text-red-300 text-sm'>{error}</span>}
           </div>
         </form>
 
         {success && (
           <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-            <Subscribed onClose={() => setSuccess(false)} />
+            <SuccessModal onClose={() => setSuccess(false)} />
           </div>
         )}
       </div>
