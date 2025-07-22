@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SuccessModal = ({ onClose, title = "Success!", message = "Your action was successful." }) => (
-  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+  <div className="fixed inset-0 flex items-center justify-center">
     <div className="bg-white shadow-xl p-6 rounded-xl text-center w-80">
       <h2 className="text-2xl font-semibold mb-2 text-green-700">{title}</h2>
       <p className="mb-4">{message}</p>
