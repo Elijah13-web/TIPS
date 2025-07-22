@@ -3,37 +3,52 @@ import Wrapper from '../Reuseable/Wrapper';
 import jumb from "../../assets/icons/jumb.jpg";
 import Subscribed from '../modals/Subscribed';
 import axios from 'axios';
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (loading) return;
 
-  if (!email) {
-    setError('Email address is required.');
-    return;
-  }
-  if (!validateEmail(email)) {
-    setError('Please enter a valid email address.');
-    return;
-  }
+const Newsletter = () => {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  setError('');
-  setLoading(true);
-  try {
-    await axios.post("https://tips-backend.onrender.com/modals/subscribe", { email });
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+    setError('');
+  };
 
-    if (response.data && response.data.success) {
-      setSuccess(true);    // Show modal
-      setEmail('');
-    } else {
-      setError(response.data?.message || "Subscription failed. Please try again.");
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (loading) return;
+
+    if (!email) {
+      setError('Email address is required.');
+      return;
     }
-  } catch (error) {
-    setError(
-      error.response?.data?.message || "An error occurred. Please try again."
-    );
-  } finally {
-    setLoading(false);
-  }
+    if (!validateEmail(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    setError('');
+    setLoading(true);
+    try {
+      const response = await axios.post("https://tips-backend.onrender.com/modals/subscribe", { email });
+
+      if (response.data && response.data.success) {
+        setSuccess(true);    // Show modal
+        setEmail('');
+      } else {
+        setError(response.data?.message || "Subscription failed. Please try again.");
+      }
+    } catch (error) {
+      setError(
+        error.response?.data?.message || "An error occurred. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Wrapper>
@@ -81,15 +96,14 @@ const handleSubmit = async (e) => {
           </div>
         </form>
 
-       {success && (
-  <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-    <Subscribed onClose={() => setSuccess(false)} />
-  </div>
-)}
-
+        {success && (
+          <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+            <Subscribed onClose={() => setSuccess(false)} />
+          </div>
+        )}
       </div>
     </Wrapper>
   );
 };
 
-export default Newsletter; 
+export default Newsletter;
