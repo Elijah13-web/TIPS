@@ -1,22 +1,16 @@
 import React from 'react';
-import Success from "../../assets/icons/Logo.png";
 
-const Subscribed = ({ onClose }) => {
-  return (
-    <div className="flex items-center justify-center">
-      <div className="flex flex-col items-center rounded-md w-full max-w-xl bg-white p-8 shadow-lg">
-        <img src={Success} className="w-30 h-30" alt="Success Icon" />
-        <h1 className="text-2xl font-semibold mb-4 text-center">Subscribed!</h1>
-        <p className="mb-6 text-center">Thank you for subscribing to our newsletter.</p>
-        <button
-          className="bg-[#147C84] w-full text-white font-semibold py-3 rounded hover:bg-[#10656C] transition-colors"
-          onClick={onClose} 
-        >
-          Continue
-        </button>
-      </div>
-    </div>
-  );
-};
+const Subscribed = ({ onClose }) => (
+  <div className="bg-white shadow-xl p-6 rounded-xl text-center">
+    <h2 className="text-2xl font-semibold mb-2 text-green-700">Thank you!</h2>
+    <p className="mb-4">You've successfully subscribed to our newsletter.</p>
+    <button
+      onClick={onClose}
+      className="mt-2 px-4 py-2 rounded bg-[#ED1C22] text-white font-semibold hover:bg-[#c8141c]"
+    >
+      Close
+    </button>
+  </div>
+);
 
 export default Subscribed;

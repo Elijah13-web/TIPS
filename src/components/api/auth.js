@@ -1,8 +1,6 @@
 const API_URL = "https://tips-backend.onrender.com/api/auth";
 
-/**
- * Register new user
- */
+
 export const register = async (fullName, email, password) => {
   try {
     const res = await fetch(`${API_URL}/register`, {
@@ -17,9 +15,6 @@ export const register = async (fullName, email, password) => {
   }
 };
 
-/**
- * Login user
- */
 export const login = async (email, password) => {
   try {
     const res = await fetch(`${API_URL}/login`, {
@@ -40,9 +35,6 @@ export const login = async (email, password) => {
   }
 };
 
-/**
- * Get current user by token
- */
 export const getCurrentUser = async (token) => {
   try {
     const res = await fetch(`${API_URL}/me`, {

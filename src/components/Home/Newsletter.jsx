@@ -3,54 +3,37 @@ import Wrapper from '../Reuseable/Wrapper';
 import jumb from "../../assets/icons/jumb.jpg";
 import Subscribed from '../modals/Subscribed';
 import axios from 'axios';
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (loading) return;
 
-const Newsletter = () => {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
+  if (!email) {
+    setError('Email address is required.');
+    return;
+  }
+  if (!validateEmail(email)) {
+    setError('Please enter a valid email address.');
+    return;
+  }
 
-  const handleChange = (e) => {
-    setEmail(e.target.value);
-    setError('');
-    setSuccess(false);
-  };
+  setError('');
+  setLoading(true);
+  try {
+await axios.post("https://tips-backend.onrender.com/modals/subscribe", { ajiboyeelijah242@gmail.com });
 
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (loading) return;
-    if (!email) {
-      setError('Email address is required.');
-      return;
+    if (response.data && response.data.success) {
+      setSuccess(true);    // Show modal
+      setEmail('');
+    } else {
+      setError(response.data?.message || "Subscription failed. Please try again.");
     }
-    if (!validateEmail(email)) {
-      setError('Please enter a valid email address.');
-      return;
-    }
-    setError('');
-    setLoading(true);
-    try {
-      const response = await axios.post("/subscribe", { email });
-      if (response.data && response.data.success) {
-        setSuccess(true);
-        setEmail('');
-      } else {
-        setError(response.data?.message || "Subscription failed. Please try again.");
-      }
-    } catch (error) {
-      setError(
-        error.response?.data?.message ||
-        "An error occurred. Please try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
+  } catch (error) {
+    setError(
+      error.response?.data?.message || "An error occurred. Please try again."
+    );
+  } finally {
+    setLoading(false);
+  }
 
   return (
     <Wrapper>
@@ -97,12 +80,13 @@ const Newsletter = () => {
             {error && <span className='text-red-300 text-sm'>{error}</span>}
           </div>
         </form>
-        {/* Modal appears inside the Wellness section */}
-        {success && (
-          <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-            <Subscribed onClose={() => setSuccess(false)} />
-          </div>
-        )}
+
+       {success && (
+  <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+    <Subscribed onClose={() => setSuccess(false)} />
+  </div>
+)}
+
       </div>
     </Wrapper>
   );
