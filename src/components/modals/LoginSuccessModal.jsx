@@ -2,7 +2,7 @@ import React from 'react';
 
 const LoginSuccessModal = ({ onClose }) => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-white opacity-50 z-0">
+    <div className="fixed inset-0 flex items-center justify-center bg-black opacity-50 z-50">
       <div className="bg-white rounded-xl shadow-xl p-6 w-80 text-center">
         <h2 className="text-xl font-bold mb-4 text-green-600">Login Successful!</h2>
         <p className="mb-4 text-gray-700">Welcome back 👋</p>

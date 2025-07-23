@@ -75,30 +75,43 @@ const Register = () => {
           <div className='bg-white flex flex-col justify-center md:p-8 px-2 py-4'>
             <h2 className='text-2xl font-bold mb-6 text-[#003334]'>Create Account</h2>
             <form onSubmit={handleSubmit} className='space-y-4'>
-              <input
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={formData.firstName}
-                onChange={handleChange}
-                className={`w-full p-3 border rounded-lg ${errors.firstName ? 'border-red-500' : 'border-gray-300'}`}
-              />
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                value={formData.lastName}
-                onChange={handleChange}
-                className={`w-full p-3 border rounded-lg ${errors.lastName ? 'border-red-500' : 'border-gray-300'}`}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-                className={`w-full p-3 border rounded-lg ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
-              />
+
+              <div>
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  className={`w-full p-3 border rounded-lg ${errors.firstName ? 'border-red-500' : 'border-gray-300'}`}
+                />
+                {errors.firstName && <p className='text-red-500 text-xs mt-1'>{errors.firstName}</p>}
+              </div>
+
+              <div>
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className={`w-full p-3 border rounded-lg ${errors.lastName ? 'border-red-500' : 'border-gray-300'}`}
+                />
+                {errors.lastName && <p className='text-red-500 text-xs mt-1'>{errors.lastName}</p>}
+              </div>
+
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={`w-full p-3 border rounded-lg ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                />
+                {errors.email && <p className='text-red-500 text-xs mt-1'>{errors.email}</p>}
+              </div>
+
               <div className="relative">
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -114,8 +127,11 @@ const Register = () => {
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </div>
+                {errors.password && <p className='text-red-500 text-xs mt-1'>{errors.password}</p>}
               </div>
+
               {errors.api && <p className='text-red-500 text-sm'>{errors.api}</p>}
+
               <button
                 type="submit"
                 disabled={loading}
