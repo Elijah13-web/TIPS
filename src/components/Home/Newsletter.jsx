@@ -36,8 +36,8 @@ const Newsletter = () => {
       const response = await axios.post("https://tips-backend.onrender.com/subscribe", { email });
 
       if (response.data && response.data.success) {
-        setSuccess(true);
-        setEmail('');
+        setSuccess(true);          // ✅ open success modal
+        setEmail('');              // ✅ clear field
       } else {
         setError(response.data?.message || "Subscription failed. Please try again.");
       }
@@ -90,11 +90,16 @@ const Newsletter = () => {
           </div>
         </form>
 
-        {success && (
-          <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-            <SuccessModal onClose={() => setSuccess(false)} />
-          </div>
-        )}
+       {success && (
+  <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-30 z-40">
+    <SuccessModal
+      title="Thank you!"
+      message="You've successfully subscribed to our newsletter."
+      onClose={() => setSuccess(false)}
+    />
+  </div>
+)}
+
       </div>
     </Wrapper>
   );

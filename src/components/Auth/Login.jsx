@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthContext';
 import { login } from '../api/auth';
-import { subscribe } from '../api/subscribe'; // ✅ import subscribe
 import signup from "../../assets/images/signup.jpg";
 import { Eye, EyeOff } from 'lucide-react';
 import LoginSuccessModal from '../modals/LoginSuccessModal';
@@ -12,13 +11,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  // ✅ New states for subscription
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [newsletterMsg, setNewsletterMsg] = useState('');
-  const [newsletterError, setNewsletterError] = useState('');
-  const [newsletterLoading, setNewsletterLoading] = useState(false);
+  const [success, setSuccess] = useState(false); 
 
   const { setIsLoggedIn, setUser, setToken } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -36,6 +29,8 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate fields
     const newErrors = {};
     if (!formData.email.trim()) newErrors.email = 'Email is required';
     if (!formData.password.trim()) newErrors.password = 'Password is required';
@@ -45,13 +40,20 @@ const Login = () => {
     setLoading(true);
     try {
       const res = await login(formData.email, formData.password);
+      console.log("Login response:", res);
+
       if (res.success && res.token) {
+        // Save to localStorage
         localStorage.setItem("loggedIn", "true");
         localStorage.setItem("token", res.token);
         localStorage.setItem("user", JSON.stringify(res.user));
+
+        // Update context
         setIsLoggedIn(true);
         setToken(res.token);
         setUser(res.user);
+
+        // ✅ Show modal
         setSuccess(true);
       } else {
         setErrors({ api: res.msg || 'Invalid login credentials' });
@@ -64,34 +66,10 @@ const Login = () => {
     }
   };
 
+  // When modal is closed, navigate to home
   const handleModalClose = () => {
     setSuccess(false);
     navigate('/');
-  };
-
-  // ✅ Handle subscription submit
-  const handleSubscribe = async (e) => {
-    e.preventDefault();
-    setNewsletterError('');
-    setNewsletterMsg('');
-    if (!newsletterEmail.trim()) {
-      setNewsletterError('Please enter your email to subscribe.');
-      return;
-    }
-    setNewsletterLoading(true);
-    try {
-      const res = await subscribe(newsletterEmail);
-      if (res.success) {
-        setNewsletterMsg('✅ ' + res.message);
-        setNewsletterEmail('');
-      } else {
-        setNewsletterError('❌ ' + res.message);
-      }
-    } catch (error) {
-      setNewsletterError('❌ Something went wrong.');
-    } finally {
-      setNewsletterLoading(false);
-    }
   };
 
   return (
@@ -114,7 +92,6 @@ const Login = () => {
                 onChange={handleChange}
                 className={`w-full p-3 border rounded-lg ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
               />
-              {errors.email && <p className='text-red-500 text-xs'>{errors.email}</p>}
               <div className="relative">
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -131,7 +108,6 @@ const Login = () => {
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </div>
               </div>
-              {errors.password && <p className='text-red-500 text-xs'>{errors.password}</p>}
               {errors.api && <p className='text-red-500 text-sm'>{errors.api}</p>}
               <button
                 type="submit"
@@ -140,26 +116,6 @@ const Login = () => {
               >
                 {loading ? 'Logging in...' : 'Log In'}
               </button>
-            </form>
-
-            {/* ✅ Newsletter subscription form */}
-            <form onSubmit={handleSubscribe} className='mt-6 space-y-2'>
-              <input
-                type="email"
-                value={newsletterEmail}
-                onChange={(e) => setNewsletterEmail(e.target.value)}
-                placeholder="Subscribe to newsletter"
-                className="w-full p-2 border rounded-lg"
-              />
-              <button
-                type="submit"
-                disabled={newsletterLoading}
-                className="bg-[#ED1C22] text-white px-4 py-2 rounded-lg hover:bg-[#c8141c] cursor-pointer transition duration-200"
-              >
-                {newsletterLoading ? 'Subscribing...' : 'Subscribe'}
-              </button>
-              {newsletterMsg && <p className='text-green-600 text-xs'>{newsletterMsg}</p>}
-              {newsletterError && <p className='text-red-500 text-xs'>{newsletterError}</p>}
             </form>
           </div>
         </div>
