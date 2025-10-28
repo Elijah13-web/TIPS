@@ -5,6 +5,10 @@ import img3 from "../../assets/images/data.jpg"
 import img4 from "../../assets/images/public.jpg"
 import img15 from "../../assets/images/graphic.jpg"
 import img16 from "../../assets/images/work.jpg"
+import img17 from "../../assets/images/home.jpg"
+import img18 from "../../assets/images/phone.jpg"
+import img19 from "../../assets/images/tie.jpg"
+import img20 from "../../assets/images/makeup.jpg"
 
 import img5 from "../../assets/images/tailoring.jpg"
 import img6 from "../../assets/images/hardware.jpg"
@@ -12,6 +16,10 @@ import img7 from "../../assets/images/hair.jpg"
 import img8 from "../../assets/images/cctv.jpg"
 import img9 from "../../assets/images/analysis.jpg"
 import img10 from "../../assets/images/script.jpg"
+import img11 from "../../assets/images/baking.jpg"
+import img12 from "../../assets/images/networking.jpg"
+import img13 from "../../assets/images/brodcasting.jpg"
+import img14 from "../../assets/images/photo.jpg"
 
 export const prodb = [
     {
@@ -58,16 +66,30 @@ export const prodb = [
     },
     {
         _id: 7,
-        heading:"GRAPHIC DESIGN.",
-        description:"Unleash your creativity and become a professional in Graphic Design! comprehensive training programs will equip you with the essential skills and techniques needed to create stunning visual content. Learn from industry experts and gain hands-on experience that will prepare you for a successful career in this vibrant field.Transform your passion into a profession today!",
-        image: img16,
+        heading:"SMART HOME AUTOMATION.",
+        description:"Embrace the future by becoming a professional in Smart Home Automation! Our cutting-edge training programs will provide you with the skills and knowledge to, install, and manage advanced home automation systems. Learn from industry experts and gain hands-on experience that will prepare you a rewarding career in this rapidly growing field. Start your journey towards transforming homes into smart spaces today!",
+        image: img17,
         
     },
     {
         _id: 8,
-        heading:"GRAPHIC DESIGN.",
-        description:"Unleash your creativity and become a professional in Graphic Design! comprehensive training programs will equip you with the essential skills and techniques needed to create stunning visual content. Learn from industry experts and gain hands-on experience that will prepare you for a successful career in this vibrant field.Transform your passion into a profession today!",
-        image: img16,
+        heading:"MOBILE PHONE REPAIR.",
+        description:"Start your journey towards becoming a professional in Mobile Phone Repair today! Our specialized training programs will teach you the essential skills to diagnose and fix a wide range of mobile devices. Learn from experienced instructors and gain practical knowledge that will prepare you for a rewarding career in this fast-growing industry. Your future in mobile technology awaits you.",
+        image: img18,
+        
+    },
+    {
+        _id: 9,
+        heading:"TIE AND DYE CRAFT.",
+        description:"Dive into the vibrant world of Tie & Dye Craft and become a professional in this creative art form! Our engaging training programs will teach you the techniques skills needed to create stunning, one-of-a-kind pieces. Learn from experienced artisans and unleash your while preparing for a fulfilling career in this exciting craft. Start your journey to becoming a Tie & Dye expert today",
+        image: img19,
+        
+    },
+    {
+        _id: 10,
+        heading:"MAKE UP  AND GELE TYING.",
+        description:"Unleash your creativity and embark on an exciting journey to become a pro in makeup and geletying! Dive into the artistry of crafting stunning looks and master the beautiful techniques of geletying. Join a lively community of beauty lovers and take your skills to new heights—your amazing adventure starts now",
+        image: img20,
         
     },
 ]
@@ -116,17 +138,31 @@ export const vocdb = [
         
     },
     {
-        _id: 6,
-        heading:"SCRIPT WRITING.",
-        description:"Harness your storytelling skills and become a true professional in scriptwriting. Master the craft and techniques needed to create captivating narratives for film, television, and theater. Step into a dynamic industry where your words will come to life on screen and stage—your successful journey starts now!",
-        image: img10,
+        _id: 7,
+        heading:"BAKING AND CONFECTIONARIES.",
+        description:"Elevate your skills and embrace your passion for baking and confectionaries by becoming a trueprofessional in this exciting field. Master the art of crafting delectable treats and exquisite desserts that impress and delight. Step into a thriving industry where your creativity and expertise will shine, your journey to success starts now!",
+        image: img11,
         
     },
     {
-        _id: 6,
-        heading:"SCRIPT WRITING.",
-        description:"Harness your storytelling skills and become a true professional in scriptwriting. Master the craft and techniques needed to create captivating narratives for film, television, and theater. Step into a dynamic industry where your words will come to life on screen and stage—your successful journey starts now!",
-        image: img10,
+        _id: 8,
+        heading:"COMPUTER NETWORKING.",
+        description:"Take your career to new heights by becoming a professional in computer networking. Gain the essential skills and knowledge needed to design, implement, and manage network systems. Join a vital industry that powers communication and connectivity and start your journey toward a rewarding future today!",
+        image: img12,
+        
+    },
+    {
+        _id: 9,
+        heading:" BRoadcasting",
+        description:"Step into the dynamic world of Broadcasting and become a professional in this exciting field! Our comprehensive training programs will equip you with the skills and knowledge needed to excel in various broadcasting roles, from radio to television. Learn from industry professionals and gain hands-on experience that will prepare you for a successful career in media.",
+        image: img13,
+        
+    },
+    {
+        _id: 10,
+        heading:"PHTTOGRAPHY AND VIDEOGRAPHY",
+        description:"Transform your passion for capturing moments into a rewarding career by becoming a professional in photography and videography. Learn the skills and techniques to create stunning visuals that tell compelling stories. Join a dynamic industry where creativity knows no bounds and start your journey today!",
+        image: img14,
         
     },
 ]
