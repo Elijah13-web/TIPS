@@ -47,12 +47,6 @@ const SuccessModal = ({ onClose, title = "Success!", message = "Your action was 
         </div>
         <h2 className="text-2xl font-semibold mb-2 text-green-700">{title}</h2>
         <p className="mb-4">{message}</p>
-        <button
-          onClick={handleClose}
-          className="mt-2 px-4 py-2 rounded bg-[#ED1C22] text-white font-semibold hover:bg-[#c8141c] transition duration-200"
-        >
-          Close
-        </button>
       </div>
     </div>
   );

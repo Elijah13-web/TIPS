@@ -56,6 +56,20 @@ export const prodb = [
         image: img16,
         
     },
+    {
+        _id: 7,
+        heading:"GRAPHIC DESIGN.",
+        description:"Unleash your creativity and become a professional in Graphic Design! comprehensive training programs will equip you with the essential skills and techniques needed to create stunning visual content. Learn from industry experts and gain hands-on experience that will prepare you for a successful career in this vibrant field.Transform your passion into a profession today!",
+        image: img16,
+        
+    },
+    {
+        _id: 8,
+        heading:"GRAPHIC DESIGN.",
+        description:"Unleash your creativity and become a professional in Graphic Design! comprehensive training programs will equip you with the essential skills and techniques needed to create stunning visual content. Learn from industry experts and gain hands-on experience that will prepare you for a successful career in this vibrant field.Transform your passion into a profession today!",
+        image: img16,
+        
+    },
 ]
 
 export const vocdb = [
@@ -92,6 +106,20 @@ export const vocdb = [
         heading:"DATA ANALYSIS.",
         description:"Get ready to embark on an exciting journey in the world of data analysis! Apply now and unleash your potential to become a skilled professional in this dynamic field. This is your chance to turn your passion for data into a thrilling career—don’t let it pass you by!",
         image: img9,
+        
+    },
+    {
+        _id: 6,
+        heading:"SCRIPT WRITING.",
+        description:"Harness your storytelling skills and become a true professional in scriptwriting. Master the craft and techniques needed to create captivating narratives for film, television, and theater. Step into a dynamic industry where your words will come to life on screen and stage—your successful journey starts now!",
+        image: img10,
+        
+    },
+    {
+        _id: 6,
+        heading:"SCRIPT WRITING.",
+        description:"Harness your storytelling skills and become a true professional in scriptwriting. Master the craft and techniques needed to create captivating narratives for film, television, and theater. Step into a dynamic industry where your words will come to life on screen and stage—your successful journey starts now!",
+        image: img10,
         
     },
     {
