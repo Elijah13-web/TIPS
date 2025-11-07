@@ -33,7 +33,7 @@ const Newsletter = () => {
     setError('');
     setLoading(true);
     try {
-      const response = axios.post("/subscribe", { email });
+const response = await axios.post("/subscribe", { email });
 
 
       if (response.data && response.data.success) {
