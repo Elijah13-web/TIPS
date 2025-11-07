@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Admission from './components/Apply/Addmission';
-import StudentPortal from './components/Apply/StudentPortal';
+// import StudentPortal from './components/Apply/StudentPortal';
 import Courses from './components/Apply/Courses';
 import Footer from './components/Reuseable/Footer';
 import ScrollToTop from './components/Reuseable/ScrollToTop';
@@ -31,7 +31,7 @@ function AppContent() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/admission" element={<Admission />} />
-          <Route path="/student-portal" element={<StudentPortal />} />
+          {/* <Route path="/student-portal" element={<StudentPortal />} /> */}
           <Route path="/courses" element={<Courses />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

@@ -64,7 +64,7 @@ const Navbar = () => {
                 <button className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Apply</button>
                 <div className="absolute right-0 top-full mt-2 bg-[#EDEDED] border rounded-md shadow-md w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-100 z-50">
                   <Link to="/admission" className="block px-4 py-2 hover:bg-gray-500 text-[#003334] font-serif hover:text-[#ED1C22]">Admission</Link>
-                  <Link to="/student-portal" className="block px-4 py-2 hover:bg-gray-500 text-[#003334] font-serif hover:text-[#ED1C22]">Student Portal</Link>
+                  {/* <Link to="/student-portal" className="block px-4 py-2 hover:bg-gray-500 text-[#003334] font-serif hover:text-[#ED1C22]">Student Portal</Link> */}
                   <Link to="/courses" className="block px-4 py-2 hover:bg-gray-500 text-[#003334] font-serif hover:text-[#ED1C22]">Our Courses</Link>
                 </div>
               </div>
@@ -130,7 +130,7 @@ const Navbar = () => {
                 <Link to="/" onClick={() => handleNavClick('/')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Home</Link>
                 <Link to="/about" onClick={() => handleNavClick('/about')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">About</Link>
                 <Link to="/admission" onClick={() => handleNavClick('/admission')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Admission</Link>
-                <Link to="/student-portal" onClick={() => handleNavClick('/student-portal')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Student Portal</Link>
+                {/* <Link to="/student-portal" onClick={() => handleNavClick('/student-portal')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Student Portal</Link> */}
                 <Link to="/courses" onClick={() => handleNavClick('/courses')} className="text-xl text-[#003334] font-serif hover:text-[#ED1C22]">Our Courses</Link>
 
                 {isLoggedIn ? (
