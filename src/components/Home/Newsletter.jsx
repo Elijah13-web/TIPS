@@ -33,11 +33,12 @@ const Newsletter = () => {
     setError('');
     setLoading(true);
     try {
-      const response = await axios.post("https://tips-backend.onrender.com/subscribe", { email });
+      const response = axios.post("/subscribe", { email });
+
 
       if (response.data && response.data.success) {
-        setSuccess(true);          // ✅ open success modal
-        setEmail('');              // ✅ clear field
+        setSuccess(true);        
+        setEmail('');              
       } else {
         setError(response.data?.message || "Subscription failed. Please try again.");
       }
