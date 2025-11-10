@@ -22,7 +22,6 @@ const Application = () => {
     }
     setErrors((prev) => ({ ...prev, [name]: '' }));
   };
-
 const handleSubmit = async (e) => {
   e.preventDefault();
   const newErrors = {};
@@ -35,12 +34,20 @@ const handleSubmit = async (e) => {
 
   if (Object.keys(newErrors).length === 0) {
     try {
-      // optional: upload file to backend or cloud first
-      // Here we'll just send phone & email
-      const res = await axios.post('https://tips-backend.onrender.com/api/apply', {
-        phone: formData.phone,
-        email: formData.email
-      });
+      const data = new FormData();
+      data.append('phone', formData.phone);
+      data.append('email', formData.email);
+      data.append('file', formData.file);
+
+      const res = await axios.post(
+        'https://tips-backend.onrender.com/api/apply', 
+        data,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
 
       if (res.data && res.data.success) {
         setSuccess(true);
@@ -54,6 +61,7 @@ const handleSubmit = async (e) => {
     }
   }
 };
+
 
   return (
     <div className='bg-[#ededed] p-5 rounded-xl font-serif'>
