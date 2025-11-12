@@ -1,5 +1,7 @@
 // Use environment variable for flexibility
-const API_URL = import.meta.env.VITE_API_URL || "https://api.tipsedu.ng/api/auth";
+
+const API_URL = "https://api.tipsedu.ng/api/auth";
+
 
 export const register = async (fullName, email, password) => {
   try {
